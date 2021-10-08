@@ -128,11 +128,19 @@
 	// 6.3) Do steps 4.1 (initialize the state variables) and 4.2 (render).
 
 /*-------------------------------- Constants --------------------------------*/
-
+const sqZero = document.querySelector("#sq0")
+const sqOne = document.querySelector("#sq1")
+const sqTwo = document.querySelector("#sq2")
+const sqThree = document.querySelector("#sq3")
+const sqFour = document.querySelector("#sq4")
+const sqFive = document.querySelector("#sq5")
+const sqSix = document.querySelector("#sq6")
+const sqSeven = document.querySelector("#sq7")
 
 
 /*---------------------------- Variables (state) ----------------------------*/
 
+let boardArray, playerTurn, isWinner
 
 
 /*------------------------ Cached Element References ------------------------*/
