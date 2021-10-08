@@ -136,6 +136,10 @@ const sqFour = document.querySelector("#sq4")
 const sqFive = document.querySelector("#sq5")
 const sqSix = document.querySelector("#sq6")
 const sqSeven = document.querySelector("#sq7")
+const sqEight = document.querySelector("#sq8")
+const gameStatus = document.querySelector("#message")
+
+
 
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -148,9 +152,40 @@ let boardArray, playerTurn, isWinner
 
 
 /*----------------------------- Event Listeners -----------------------------*/
-
-
+// form.addEventListener("reset", init)
+// console.dir(section)
 
 /*-------------------------------- Functions --------------------------------*/
 
+// init()
 
+function init(){
+	sqZero = null 
+	sqOne = null
+	sqTwo = null
+	sqThree = null
+	sqFour = null
+	sqFive = null
+	sqSix = null
+	sqSeven = null
+	sqEight = null
+	playerTurn = 1
+	isWinner = null
+
+	// titleEl.className = ""
+	// messageEl.className = ""
+	// messageEl.innerText = "TicTacToe, Baby.."
+	// replayButton.setAttribute("hidden", true)
+	// boardArray = []
+}
+
+function render() {
+	let squareArray = [
+	[0,1,2],
+	[3,4,5],
+	[6,7,8],
+	]
+	for(let i = 0; i < squareArray.length; i++){
+		let squareArray = squareArray[i]
+	}
+}
