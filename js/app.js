@@ -14,7 +14,7 @@ const winningCombos = [
 
 /*---------------------------- Variables (state) ----------------------------*/
 // state of the game, what's happpening on the board 
-let boardArray = [], playerTurn, isWinner
+let boardArray = [], playerTurn, isWinner, playerName
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -45,8 +45,9 @@ function handleClick(evt){ // the function that deals with what happens when a u
 	if (checkValid(id)){ // check if user input 'click' is valid 
 		boardArray[id]= playerTurn // identify who's turn it is by checking the value of the square  
 		switchTurn() // switch user  
-		render() // call the render function 
 		getWinner()
+		render() // call the render function 
+		
 	} 
 	
 }
@@ -54,10 +55,10 @@ function handleClick(evt){ // the function that deals with what happens when a u
 //return value 
 
 function checkValid (id){ // check to see if user input click on the square is valid (no dups)
-	if(boardArray[id] !== null){ // checks to if there's a value of (1,-1)
-		return false // if false end loop (don't execute any further) 
+	if(boardArray[id] === null && isWinner === null){ // checks to if there's a value of (1,-1)
+		return true // if false end loop (don't execute any further) 
 } else{
-		return true // go ahead and mark the square 
+		return false // go ahead and mark the square 
 }
 
 }
@@ -94,7 +95,7 @@ function switchTurn(){
 function assignTurn(){//function to display who's turn it is in the html 
   if (playerTurn === 1 || playerTurn === null){
     playerName = "X"
-  } else if(playerTurn === -1){
+  } else if (playerTurn === -1) {
     playerName = "O"
   }
 }
@@ -105,8 +106,9 @@ function updateGameStatus(){
 	} else if (isWinner !== null){
 		gameStatus.innerText = `${isWinner} won the Game`
 	}else {
-		gameStatus.innerText = `It's ${playerTurn}'s turn'`
+		gameStatus.innerText = `It's ${playerName}'s turn'`
 	}
+	getWinner()
 }
 
 
@@ -116,9 +118,12 @@ function getWinner(){
 		const a = winningCombos[index][0]; // access the winning combos in column 0, define as const a
 		const b = winningCombos[index][1] // access the winning combos in column 1, define as const b 
 		const c = winningCombos[index][2] // access the winning combos in column 2, define as const c
-		if (boardArray[a] + boardArray[b] + boardArray[c] === 3) { // look at elements in positions of the array a,b,c add them together, if they = 3 
-			console.log('winner, baby!') // we have a winner 
-		}
+		if (Math.abs(boardArray[a] + boardArray[b] + boardArray[c]) === 3) { // look at elements in positions of the array a,b,c add them together, if they = 3 
+			isWinner = boardArray[a] === 1 ? 'X' : 'O'
+			} 
+			else if (boardArray.includes(null) === false){
+				isWinner = 'T' 
+			}
 	
 	}
 }
