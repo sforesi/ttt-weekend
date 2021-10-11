@@ -106,7 +106,7 @@ function updateGameStatus(){
 	} else if (isWinner !== null){
 		gameStatus.innerText = `${isWinner} won the Game`
 	}else {
-		gameStatus.innerText = `It's ${playerName}'s turn'`
+		gameStatus.innerText = `It's ${playerName}'s turn`
 	}
 	getWinner()
 }
